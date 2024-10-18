@@ -1,0 +1,44 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="text-center mb-4">Registrar Asistencia</h2>
+
+    {% if mensaje %}
+        <div class="alert alert-warning text-center">{{ mensaje }}</div>
+    {% endif %}
+
+    <form method="POST" class="text-center">  <!-- Centrar el formulario -->
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Esto mostrará el formulario que incluye el campo de selección de usuario -->
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+        </div>
+    </form>
+</div>
+
+<!-- Carrusel de imágenes -->
+<div id="asistenciaCarousel" class="carousel slide carousel-container" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/carrusel1.jpg' %}" class="d-block w-100" alt="Imagen 1">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/carrusel2.jpg' %}" class="d-block w-100" alt="Imagen 2">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/carrusel3.jpg' %}" class="d-block w-100" alt="Imagen 3">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#asistenciaCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#asistenciaCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock %}

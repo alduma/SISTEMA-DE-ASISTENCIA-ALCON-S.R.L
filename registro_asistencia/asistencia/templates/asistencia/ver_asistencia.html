@@ -1,0 +1,40 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<body style="background-color: #b4adad;"> 
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Historial de Asistencias</h2>
+
+        <table class="table table-bordered text-center" style="border: 2px solid black;">
+            <thead>
+                <tr style="background-color: #FFD700;"> 
+                    <th style="border: 2px solid black;">Fecha</th>
+                    <th style="border: 2px solid black;">Usuario</th>
+                    <th style="border: 2px solid black;">Hora de Entrada</th>
+                    <th style="border: 2px solid black;">Hora de Salida</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asistencia in asistencias %}
+                    <tr style="background-color: #ADD8E6;"> 
+                        <td style="border: 2px solid black;">{{ asistencia.fecha }}</td>
+                        <td style="border: 2px solid black;">{{ asistencia.usuario.username }}</td>
+                        <td style="border: 2px solid black;">{{ asistencia.hora_entrada }}</td>
+                        <td style="border: 2px solid black;">{{ asistencia.hora_salida }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'descargar_pdf' %}" class="btn btn-danger">Descargar PDF</a>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'registrar_asistencia' %}" class="btn btn-primary">Regresar a Registro de Asistencia</a>
+        </div>
+    </div>
+
+</body>
+{% endblock %}
